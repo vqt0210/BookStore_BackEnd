@@ -12,6 +12,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://book-store-front-end-tawny.vercel.app",
+      "https://www.teasonmike.io.vn",
     ],
     credentials: true,
   })
