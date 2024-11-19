@@ -62,7 +62,8 @@ app.use("/api/admin", adminRoutes);
 
 // Base route
 app.use("/", (req, res) => {
-  res.send("Book Store Server is running!");
+  const serverIdentifier = process.env.SERVER_IDENTIFIER || "Server 1";
+  res.send(`Book Store Server is running ${serverIdentifier}!`);
 });
 
 // Database connection
