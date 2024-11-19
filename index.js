@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://book-store-front-end-tawny.vercel.app",
+      "https://book-store-front-end-ivory.vercel.app",
       "https://www.teasonmike.io.vn",
       "https://book-store-front-end-git-main-vqtees-projects.vercel.app/",
     ],
