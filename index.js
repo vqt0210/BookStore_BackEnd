@@ -3,8 +3,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { swaggerUi, swaggerSpec } = require("./swagger"); // Import Swagger configuration
-
 const app = express();
 
 // Middleware
@@ -32,9 +30,6 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/admin", adminRoutes);
 
-// Swagger route
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
 // Base route
 app.use("/", (req, res) => {
   res.send(`Book Store Server is running !`);
@@ -46,5 +41,5 @@ mongoose
   .then(() => console.log("MongoDB connected successfully!"))
   .catch((err) => console.log(err));
 
-
+// Export Express app for serverless deployment
 module.exports = app;
