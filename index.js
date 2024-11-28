@@ -7,13 +7,7 @@ const app = express();
 
 // Middleware
 
-// Middleware to handle CORP and COEP
-app.use((req, res, next) => {
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");  
-  res.setHeader("Cross-Origin-Embedder-Policy", "unsafe-none");  
-  next();
-});
-
+app.use(express.json());
 app.use(
   cors({
     origin: [
@@ -26,7 +20,7 @@ app.use(
   })
 );
 
-app.use(express.json());
+
 
 // Routes
 const bookRoutes = require("./src/books/book.route");
