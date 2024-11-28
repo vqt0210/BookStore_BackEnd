@@ -6,7 +6,14 @@ require("dotenv").config();
 const app = express();
 
 // Middleware
-app.use(express.json());
+
+// Middleware to handle CORP and COEP
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "unsafe-none");  
+  res.setHeader("Cross-Origin-Embedder-Policy", "unsafe-none");  
+  next();
+});
+
 app.use(
   cors({
     origin: [
@@ -19,6 +26,7 @@ app.use(
   })
 );
 
+app.use(express.json());
 
 // Routes
 const bookRoutes = require("./src/books/book.route");
@@ -41,6 +49,12 @@ mongoose
   .connect(process.env.DB_URL)
   .then(() => console.log("MongoDB connected successfully!"))
   .catch((err) => console.log(err));
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 // Export Express app for serverless deployment
 module.exports = app;
