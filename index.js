@@ -19,11 +19,6 @@ app.use(
   })
 );
 
-// Set the Cross-Origin-Opener-Policy header
-app.use((req, res, next) => {
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin"); 
-  next();
-});
 
 // Routes
 const bookRoutes = require("./src/books/book.route");
